@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: hecate
+  security:
+    user:
+      name: user
+server:
+  port: 8080
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      base-path: '/actuator'
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: when-authorized
+    env:
+      show-values: when-authorized
+    configprops:
+      show-values: when-authorized
+    shutdown:
+      enabled: false
+
+hecate:
