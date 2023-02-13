@@ -21,4 +21,9 @@ jobs:
         architecture: x64
         distribution: 'temurin'
         cache: 'maven'
-    - run: mvn -B clean test
+    - run: mvn -B clean verify
+    - name: Upload JaCoCo coverage report
+      uses: actions/upload-artifact@v3
+      with:
+        name: jacoco-report-${{ inputs.ref }}
+        path: target/site/jacoco/

@@ -16,5 +16,13 @@ package org.kquiet.hecate;
 
 /** System config. */
 public class HecateConfig {
+  private String telegramSendPhotoUrl;
 
+  public String getTelegramSendPhotoUrl() {
+    return telegramSendPhotoUrl;
+  }
+
+  public void setTelegramSendPhotoUrl(String telegramSendPhotoUrl) {
+    this.telegramSendPhotoUrl = telegramSendPhotoUrl;
+  }
 }
