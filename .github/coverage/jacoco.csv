@@ -5,4 +5,4 @@ org.kquiet:hecate,org.kquiet.hecate.telegram,TelegramController,4,14,1,1,0,3,2,2
 org.kquiet:hecate,org.kquiet.hecate,BeanConfiguration,0,7,0,0,0,2,0,2,0,2
 org.kquiet:hecate,org.kquiet.hecate,Launcher,5,3,0,0,2,1,1,1,1,1
 org.kquiet:hecate,org.kquiet.hecate,HecateConfig,0,10,0,0,0,4,0,3,0,3
-org.kquiet:hecate,org.kquiet.hecate.api.telegram,SendPhotoRequest,0,31,0,0,0,13,0,9,0,9
+org.kquiet:hecate,org.kquiet.hecate.api.telegram,SendPhotoRequest,10,31,0,0,1,13,1,9,1,9
