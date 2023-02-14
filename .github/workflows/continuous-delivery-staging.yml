@@ -147,44 +147,8 @@ jobs:
         push: true
         tags: "${{ steps.prepare-image-name.outputs.full-image-name }},${{ steps.prepare-image-name.outputs.image-name }}:latest"
         labels: ${{ steps.prepare-image-label.outputs.labels }}
-  generate-javadoc:
-    needs: [precheck, call-maven-test, maven-dockerhub-deploy-staging]
-    runs-on: ubuntu-latest
-    concurrency:
-      group: delivery-staging-${{ needs.precheck.outputs.target-branch }}
-    steps:
-    - uses: actions/checkout@v3
-      with:
-        ref: ${{ needs.precheck.outputs.target-branch }}
-    - uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        java-package: jdk
-        architecture: x64
-        distribution: 'temurin'
-        cache: 'maven'
-    - name: Generate javadoc
-      run: |
-        mvn compile javadoc:javadoc
-    - name: Upload javadoc as github pages
-      uses: actions/upload-pages-artifact@v1
-      with:
-        path: target/site/apidocs
-  deploy-github-page:
-    needs: [precheck, call-maven-test, maven-deploy-staging, generate-javadoc]
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
   create-pull-request:
-    needs: [precheck, call-maven-test, maven-dockerhub-deploy-staging, generate-javadoc, deploy-github-page]
+    needs: [precheck, call-maven-test, maven-dockerhub-deploy-staging]
     runs-on: ubuntu-latest
     concurrency:
       group: delivery-staging-${{ needs.precheck.outputs.target-branch }}

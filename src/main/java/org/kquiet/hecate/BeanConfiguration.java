@@ -18,12 +18,12 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-/** Bean configuration. */
+/** Hecate bean configuration. */
 @Configuration
 public class BeanConfiguration {
   @Bean
   @ConfigurationProperties(prefix = "hecate")
-  public HecateConfig getHecateConfig() {
+  public HecateConfig hecateConfig() {
     return new HecateConfig();
   }
 }
