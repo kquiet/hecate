@@ -19,6 +19,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
+import org.springframework.web.reactive.config.EnableWebFlux;
 
 /**
  * Application launcher.
@@ -27,14 +28,15 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
  */
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class,
     DataSourceTransactionManagerAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
-<span class="fc" id="L30">public class Launcher {</span>
+@EnableWebFlux
+<span class="fc" id="L32">public class Launcher {</span>
   /**
    * Start the application.
    *
    * @param args arguments
    */
   public static void main(String[] args) {
-<span class="nc" id="L37">    SpringApplication.run(Launcher.class, args);</span>
-<span class="nc" id="L38">  }</span>
+<span class="nc" id="L39">    SpringApplication.run(Launcher.class, args);</span>
+<span class="nc" id="L40">  }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
