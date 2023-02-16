@@ -64,7 +64,7 @@ import reactor.core.publisher.Mono;
 <span class="fc" id="L64">            meterRegistry.counter(&quot;telegram.sendPhoto&quot;).increment();</span>
           }
 <span class="pc bpc" id="L66" title="1 of 2 branches missed.">          Mono&lt;Boolean&gt; returnMono = Mono.just(statusCode == 200);</span>
-<span class="fc bfc" id="L67" title="All 2 branches covered.">          if (LOGGER.isDebugEnabled()) {</span>
+<span class="pc bpc" id="L67" title="1 of 2 branches missed.">          if (LOGGER.isDebugEnabled()) {</span>
 <span class="fc" id="L68">            Mono&lt;String&gt; bodyMono = response.bodyToMono(String.class);</span>
 <span class="fc" id="L69">            bodyMono.subscribe(body -&gt; LOGGER.debug(&quot;sendPhoto result:{} {}&quot;, statusCode, body));</span>
           }
