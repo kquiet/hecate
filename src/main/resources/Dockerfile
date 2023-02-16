@@ -10,7 +10,7 @@ WORKDIR /opt/kquiet/${project.artifactId}
 
 COPY --chown=kquiet:kquiet ["hecate.sh", "./"]
 
-COPY --chown=kquiet:kquiet ["${project.build.finalName}.jar", "lib", "application.yml", "logback.xml", "./ext/"]
+COPY --chown=kquiet:kquiet ["${project.build.finalName}.jar", "lib", "application.yml", "logback-spring.xml", "./ext/"]
 
 USER kquiet:kquiet
 
