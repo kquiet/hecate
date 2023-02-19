@@ -14,7 +14,7 @@
       class="net.logstash.logback.encoder.LogstashEncoder">
       <encoding>UTF-8</encoding>
       <fieldNames>
-        <timestamp>timeStamp</timestamp>
+        <timestamp>timestamp</timestamp>
         <message>message</message>
         <logger>logger</logger>
         <thread>thread</thread>
