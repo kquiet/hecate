@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TelegramController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">org.kquiet:hecate</a> &gt; <a href="index.source.html" class="el_package">org.kquiet.hecate.telegram</a> &gt; <span class="el_source">TelegramController.java</span></div><h1>TelegramController.java</h1><pre class="source lang-java linenums">package org.kquiet.hecate.telegram;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.kquiet.hecate.api.telegram.SendPhotoRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -19,7 +25,7 @@ import reactor.core.publisher.Mono;
  */
 @RestController
 @RequestMapping(&quot;/telegram&quot;)
-<span class="fc" id="L22">public class TelegramController {</span>
+<span class="fc" id="L28">public class TelegramController {</span>
   @Autowired
   TelegramService service;
 
@@ -30,12 +36,27 @@ import reactor.core.publisher.Mono;
    *        precedence.
    * @return result
    */
-  @PostMapping(path = &quot;/sendPhoto&quot;,
-      consumes = {MediaType.MULTIPART_FORM_DATA_VALUE, MediaType.APPLICATION_JSON_VALUE})
-  public Mono&lt;Boolean&gt; sendPhoto(@RequestPart(name = &quot;req&quot;) SendPhotoRequest req,
-      @RequestPart(name = &quot;photoPart&quot;, required = false) Mono&lt;FilePart&gt; photoPart) {
-<span class="fc" id="L37">    return service.sendPhoto(req,</span>
-<span class="pc bpc" id="L38" title="1 of 2 branches missed.">        photoPart != null ? photoPart.flatMapMany(s -&gt; s.content()) : Flux.empty());</span>
+  @Operation(summary = &quot;&quot;&quot;
+      Send photo(url or file) through telegram; url take precedence over file if both are supplied
+      &quot;&quot;&quot;)
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = &quot;200&quot;,
+          description = &quot;request was executed; see response body(boolean value) for send result&quot;),
+      @ApiResponse(responseCode = &quot;4xx/5xx&quot;, description = &quot;bad request or other error&quot;,
+          content = {@Content(examples = {@ExampleObject(&quot;&quot;&quot;
+              {&quot;timestamp&quot;:1676862796078,&quot;path&quot;:&quot;/telegram/sendPhoto&quot;,&quot;status&quot;:415
+              ,&quot;error&quot;:&quot;Unsupported Media Type&quot;,&quot;requestId&quot;:&quot;a5076391-14&quot;}
+              &quot;&quot;&quot;)})})})
+  @PostMapping(path = &quot;/sendPhoto&quot;, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE},
+      produces = {MediaType.APPLICATION_JSON_VALUE})
+  public Mono&lt;Boolean&gt; sendPhoto(
+      @Parameter(description = &quot;request in json format; req.photo accepts photo url&quot;,
+          content = {@Content(mediaType = MediaType.APPLICATION_JSON_VALUE)}) @RequestPart(
+              name = &quot;req&quot;) SendPhotoRequest req,
+      @Parameter(description = &quot;photo file&quot;) @RequestPart(name = &quot;photoPart&quot;,
+          required = false) Mono&lt;FilePart&gt; photoPart) {
+<span class="fc" id="L58">    return service.sendPhoto(req,</span>
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">        photoPart != null ? photoPart.flatMapMany(s -&gt; s.content()) : Flux.empty());</span>
   }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
