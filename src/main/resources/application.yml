@@ -3,6 +3,8 @@ spring:
     name: hecate
 server:
   port: 8080
+springdoc:
+  show-actuator: true
 management:
   endpoints:
     enabled-by-default: true

@@ -15,6 +15,7 @@
 
     <spring.boot.version>3.0.2</spring.boot.version>
     <opentelemetry.instrumentation.annotation.version>1.22.1</opentelemetry.instrumentation.annotation.version>
+    <springdoc-openapi.version>2.0.2</springdoc-openapi.version>
     
     <logstash-logback-encoder.version>7.2</logstash-logback-encoder.version>
 
@@ -69,6 +70,12 @@
       <groupId>io.opentelemetry.instrumentation</groupId>
       <artifactId>opentelemetry-instrumentation-annotations</artifactId>
       <version>${opentelemetry.instrumentation.annotation.version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webflux-ui</artifactId>
+      <version>${springdoc-openapi.version}</version>
     </dependency>
     
     <dependency>
