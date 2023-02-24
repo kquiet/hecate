@@ -5,7 +5,7 @@
   <description>kquiet api</description>
   <groupId>org.kquiet</groupId>
   <artifactId>hecate</artifactId>
-  <version>0.0.3-SNAPSHOT</version>
+  <version>0.0.4-SNAPSHOT</version>
   <packaging>jar</packaging>
   <url>https://github.com/kquiet/hecate</url>
 
