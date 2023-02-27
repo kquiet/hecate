@@ -1,8 +1,7 @@
-FROM alpine:3.17.0
+FROM alpine:3.17.2
 
 RUN apk --no-cache add ca-certificates curl jq openjdk17-jre \
  && mkdir -p /opt/kquiet/${project.artifactId}/ext \
- && wget -O /opt/kquiet/${project.artifactId}/opentelemetry-javaagent.jar https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar \
  && addgroup kquiet && adduser -G kquiet -D kquiet \
  && chown -R kquiet:kquiet /opt/kquiet/
 
