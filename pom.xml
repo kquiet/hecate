@@ -5,7 +5,7 @@
   <description>kquiet api</description>
   <groupId>org.kquiet</groupId>
   <artifactId>hecate</artifactId>
-  <version>0.0.3</version>
+  <version>0.0.4</version>
   <packaging>jar</packaging>
   <url>https://github.com/kquiet/hecate</url>
 
@@ -512,6 +512,6 @@
     <connection>scm:git:https://github.com/kquiet/hecate.git</connection>
     <developerConnection>scm:git:https://github.com/kquiet/hecate.git</developerConnection>
     <url>https://github.com/kquiet/hecate/tree/main</url>
-    <tag>hecate-0.0.3</tag>
+    <tag>hecate-0.0.4</tag>
   </scm>
 </project>
